@@ -1,0 +1,20 @@
+version: '3'
+services:
+  msg-api-mp-demo:
+    image: kiefinger/msg-api-mp-demo:latest
+#    ports:
+#      - 9082:9081
+    networks:
+      - webnet
+  msg-api-mp-client:
+    image: kiefinger/msg-api-mp-client:latest
+    ports:
+      - 9081:9081
+    environment:
+      - MSG_API_MP_DEMO_URL=http://msg-api-mp-demo:9081/msg-api-mp-demo/System
+    networks:
+      - webnet
+    depends_on:
+      - msg-api-mp-demo
+networks:
+  webnet:

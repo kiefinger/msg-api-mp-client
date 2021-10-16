@@ -1,0 +1,9 @@
+FROM websphere-liberty:webProfile7
+MAINTAINER Josef Kiefinger
+ENV DEPLOYMENT_DIR_OLD /config/dropins/
+ENV DEPLOYMENT_DIR /opt/ibm/wlp/usr/servers/defaultServer
+COPY src/main/liberty/config/server.xml ${DEPLOYMENT_DIR}
+COPY src/main/liberty/config/bootstrap.properties ${DEPLOYMENT_DIR}
+COPY target/rest-1.0-SNAPSHOT.war ${DEPLOYMENT_DIR}/apps/rest.war
+#COPY target/wlp/usr/shared/resources/mongo-java-driver.jar /opt/ibm/wlp/usr/shared/resources 
+RUN installUtility install --acceptLicense defaultServer

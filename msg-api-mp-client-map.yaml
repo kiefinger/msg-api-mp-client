@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: msg-api-mp-client-data
+  namespace: default
+data:
+# MSG_API_MP_DEMO_URL: http://msg-api-mp-demo-srv.default.svc.cluster.local:9081/msg-api-mp-demo/System
+  MSG_API_MP_DEMO_URL: http://msg-api-mp-demo-srv:9081/msg-api-mp-demo/System
